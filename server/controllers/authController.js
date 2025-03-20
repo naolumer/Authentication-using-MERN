@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
-import userModel from "../models/userModel";
+import userModel from "../models/userModel.js";
 
 
 export const register = async(req,res)=>{
@@ -13,7 +13,7 @@ export const register = async(req,res)=>{
     try {
         const existingUser = await userModel.findOne({email})
         if (existingUser) {
-            return res.json({success:false, message:"User already Exists"})
+            return res.status(400).json({success:false, message:"User already Exists"})
         }
         const hashedPassword = await bcrypt.hash(password,10)
 
@@ -32,6 +32,11 @@ export const register = async(req,res)=>{
             sameSite : process.env.NODE_ENV ==="production"?
             "none":"strict",
             maxAge: 7*24*60*60*1000
+        })
+
+        res.status(200).json({
+            success:true,
+            message: "User registered Successfully!"
         })
 
     } catch(error){
