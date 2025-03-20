@@ -53,3 +53,35 @@ Before running the project, ensure you have the following installed:
    ```bash
    git clone https://github.com/your-username/mern-auth.git
    cd mern-auth
+   Install dependencies:
+2. **Install dependencies for backend:**:
+
+   *For the backend:*
+   ```bash
+   cd backend
+   npm install
+3. **For the frontend:**
+   ```bash
+    cd ../frontend
+    npm install
+
+4. **Create a .env file in the backend folder and add the following variables:**
+
+   ```bash
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret_key
+   EMAIL_USER=your_gmail_address
+   EMAIL_PASS=your_gmail_app_password
+   CLIENT_URL=http://localhost:3000
+   Replace the placeholders with your actual values.
+
+5. **Start the backend server:**
+    ```bash
+    cd backend
+    npm start
+The backend server will run on http://localhost:5000.
+
+6. **Start the frontend development server:**
+  ```bash
+   cd ../frontend
+   npm run dev
