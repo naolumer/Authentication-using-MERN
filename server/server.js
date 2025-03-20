@@ -5,16 +5,16 @@ import cookieParser from "cookie-parser"
 
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 
 app.use(express.json())
 app.use (cookieParser())
 app.use(cors({credentials:true}))
 
 
-app.get("/", (req,res)=>{
-    return res.send("Server working")
-})
+app.get("/", (req,res)=>
+    res.send("Server working")
+)
 
 
 app.listen(port, ()=>console.log(`Server running on port:${port}`))
