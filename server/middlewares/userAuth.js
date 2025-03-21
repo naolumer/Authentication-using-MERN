@@ -13,10 +13,10 @@ const userAuth = async (req, res, next)=>{
 
     try {
 
-        const tokenDecode = jwt.verify(token, process.env.JWT_SECRET)
+        const tokenDecode = await jwt.verify(token, process.env.JWT_SECRET)
         
-        if (tokenDecode) {
-            req.body.userId = tokenDecode.userId
+        if (tokenDecode.id) {
+            req.body.userId = tokenDecode.id
         } else {
             return res.json({
                 success:false,

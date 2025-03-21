@@ -122,7 +122,7 @@ export const logout = async (req,res)=> {
     }
 }
 
-const sendVerifyOtp = async (req, res)=>{
+export const sendVerifyOtp = async (req, res)=>{
     
         try {
         
@@ -130,12 +130,12 @@ const sendVerifyOtp = async (req, res)=>{
         const user = await userModel.findById(userId)
 
         if (user.isAccountVerified) {
-            res.json({
+            return res.json({
                 success:false,
                 message: "Account has already been verified"
             })
         }
-        const otp = String( Math.floor(100000 + Math.random * 900000))
+        const otp = String(Math.floor(100000 + Math.random() * 900000));
         const expiryotp = Date.now() + 24*60*60*1000
         
         user.verifyOtp = otp
@@ -145,7 +145,7 @@ const sendVerifyOtp = async (req, res)=>{
 
         const mailOptions = {
             from : process.env.EMAIL_SENDER,
-            to : email,
+            to : user.email,
             subject: "Email Verification",
             text: `Dear user here is your email verification otp : ${otp} , verify your account using this code`
         }
