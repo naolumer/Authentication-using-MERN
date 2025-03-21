@@ -279,7 +279,7 @@ export const resetPassword = async (req,res)=>{
                 message: "User not found"
             })
         }
-        if (user.resetOtp ==="" || user.resetOtp!== resetOtp){
+        if (user.resetOtp ==="" || user.resetOtp!== otp){
             return res.json({
                 success:false,
                 message: "Invalid OTP"
