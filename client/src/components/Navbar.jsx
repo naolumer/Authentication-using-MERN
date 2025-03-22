@@ -13,8 +13,8 @@ const Navbar = () => {
           src={assets.logo}
           alt="Logo"
         />
-        <div className="flex items-center gap-2 border border-gray-400 rounded-full py-2 px-6 hover:bg-gray-50 hover:border-indigo-500 cursor-pointer">
-          <p onClick={()=>navigate("/login")} className="text-lg font-semibold text-indigo-900">Login</p>
+        <div onClick={()=>navigate("/login")} className="flex items-center gap-2 border border-gray-400 rounded-full py-2 px-5 md:px-6 hover:bg-gray-50 hover:border-indigo-500 cursor-pointer mt-2">
+          <p  className="text-lg font-semibold text-indigo-900">Login</p>
           <img className="font-bold" src={assets.arrow_icon} alt="Arrow Icon" />
         </div>
       </div>
