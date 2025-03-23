@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
@@ -6,6 +6,8 @@ import { AppContext } from '../context/AppContext'
 import axios from "axios"
 import {toast} from "react-toastify"
 import { useContext } from 'react'
+import { IoIosEyeOff } from "react-icons/io";
+import { IoIosEye } from "react-icons/io";
 
 const Login = () => {
   
@@ -15,6 +17,13 @@ const Login = () => {
   const [name,setName]  = useState("")
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
+
+  const inputref = useRef()
+  
+
+  const togglepass = ()=>{
+    inputref.current.type= inputref.current.type === "password"?"text":"password"
+  }
 
 
   
@@ -113,10 +122,11 @@ const Login = () => {
               onChange={(e)=>setEmail(e.target.value)}/>
           </div>
 
-          <div className='mb-2 flex items-start gap-2 bg-[#464c6c] w-[85%]  rounded-full '>
+          <div className='mb-2 flex items-start gap-2 bg-[#464c6c] w-[85%]  rounded-full relative '>
             <img className='ml-4 mt-3' src={assets.lock_icon} alt="" />
+            <IoIosEye onClick={togglepass} className='bg-[#464c6c] text-black rounded-full absolute right-4 top-3 cursor-pointer'/>
             
-            <input className='outline-none text-white py-[4px] sm:py-[6px] md:py-[7px] px-3  rounded-full bg-transparent placeholder:text-gray-400 placeholder:text-sm placeholder:font-light w-full' 
+            <input ref={inputref} className='outline-none text-white py-[4px] sm:py-[6px] md:py-[7px] px-3  rounded-full bg-transparent placeholder:text-gray-400 placeholder:text-sm placeholder:font-light w-full' 
               type="password" 
               placeholder='Password'
               value={password}
@@ -124,7 +134,7 @@ const Login = () => {
           </div>
 
           <p onClick={()=>navigate("/reset-password")} className='text-indigo-500 font-light text-sm mr-28 sm:mr-36 md:mr-40 cursor-pointer'>Forgot password ?</p>
-          <button  className='w-[85%] text-lg py-1 md:py-2 bg-gradient-to-r  from-indigo-500 to-indigo-800 hover:bg-gradient-to-tl hover:from-indigo-800 hover:to-indigo-500 rounded-full text-white'>{state==="Sign up"?"Sign up":"Login"}</button>
+          <button className='w-[85%] text-lg py-1 md:py-2 bg-gradient-to-r  from-indigo-500 to-indigo-800 hover:bg-gradient-to-tl hover:from-indigo-800 hover:to-indigo-500 rounded-full text-white'>{state==="Sign up"?"Sign up":"Login"}</button>
           <p className='text-indigo-300 text-[15px] mb-5 mr-6 md:mb-7 sm:mr-12 md:mr-16'>{state==="Sign up"?"Already have an account?":"Don't have an account?"} <span onClick={()=>setState(state==="Sign up"?"Login":"Sign up")} className='text-indigo-500 underline cursor-pointer'>{state==="Sign up"?"Login":"Sign up"}</span></p>
           </form>
         </div>   

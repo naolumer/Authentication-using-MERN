@@ -19,8 +19,8 @@ const Navbar = () => {
       const {data} = await axios.post(`${backURL}/api/auth/logout`)
        if(data.success){
         setIsLoggedIn(false)
-        toast.success(data.message)
         navigate("/login")
+        toast.success(data.message)
        } else {
         toast.error(data.message)
        }
