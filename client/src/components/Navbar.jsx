@@ -10,10 +10,12 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const {isLoggedIn,setIsLoggedIn,userData,backURL} = useContext(AppContext)
-  axios.defaults.withCredentials = true
+  
+  
 
   const logout = async()=>{
     try {
+      axios.defaults.withCredentials = true
       const {data} = await axios.post(`${backURL}/api/auth/logout`)
        if(data.success){
         setIsLoggedIn(false)

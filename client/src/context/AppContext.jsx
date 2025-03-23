@@ -41,7 +41,7 @@ const AppContextProvider = (props)=>{
 
     useEffect(()=>{
         getUserData()
-    },[])
+    },[userData])
 
     const value ={
         isLoggedIn,setIsLoggedIn,
