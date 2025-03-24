@@ -110,7 +110,8 @@ const Login = () => {
               type="text"
               placeholder='Full Name' 
               value={name}
-              onChange={(e)=>setName(e.target.value)}/>
+              onChange={(e)=>setName(e.target.value)}
+              required/>
           </div>) }
           
 
@@ -121,7 +122,8 @@ const Login = () => {
               type="email" 
               placeholder='Email id'
               value={email}
-              onChange={(e)=>setEmail(e.target.value)}/>
+              onChange={(e)=>setEmail(e.target.value)}
+              required/>
           </div>
 
           <div className='mb-2 flex items-start gap-2 bg-[#464c6c] w-[85%]  rounded-full relative '>
@@ -132,7 +134,8 @@ const Login = () => {
               type="password" 
               placeholder='Password'
               value={password}
-              onChange={(e)=>setPassword(e.target.value)}/>
+              onChange={(e)=>setPassword(e.target.value)}
+              required/>
           </div>
 
           <p onClick={()=>navigate("/reset-password")} className='text-indigo-500 font-light text-sm mr-28 sm:mr-36 md:mr-40 cursor-pointer'>Forgot password ?</p>
