@@ -106,7 +106,7 @@ const Login = () => {
           {state==="Sign up" && (<div className='flex items-start gap-2 bg-[#464c6c] w-[85%] rounded-full mb-2 '>
             <img className='ml-4 mt-3' src={assets.person_icon} alt="" />
             
-            <input className='outline-none text-white px-3 text-sm py-[4px] font-light sm:py-[6px] md:py-[7px] rounded-full bg-transparent placeholder:text-gray-400 placeholder:text-sm placeholder:font-light w-full' 
+            <input className='outline-none text-white px-3 text-sm py-[4px] font-light sm:py-[6px] md:py-[8px] rounded-full bg-transparent placeholder:text-gray-400 placeholder:text-sm placeholder:font-light w-full' 
               type="text"
               placeholder='Full Name' 
               value={name}
@@ -130,7 +130,7 @@ const Login = () => {
             <img className='ml-4 mt-3' src={assets.lock_icon} alt="" />
             <IoIosEye onClick={togglepass} className='bg-[#464c6c] text-black rounded-full absolute right-4 top-3 cursor-pointer'/>
             
-            <input ref={inputref} className='outline-none text-sm text-white font-light py-[4px] sm:py-[6px] md:py-[7px] px-3  rounded-full bg-transparent placeholder:text-gray-400 placeholder:text-sm placeholder:font-light w-full' 
+            <input ref={inputref} className='outline-none text-sm text-white font-light py-[4px] sm:py-[6px] md:py-[8px] px-3  rounded-full bg-transparent placeholder:text-gray-400 placeholder:text-sm placeholder:font-light w-full' 
               type="password" 
               placeholder='Password'
               value={password}
