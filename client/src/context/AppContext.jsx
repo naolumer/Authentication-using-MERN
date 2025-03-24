@@ -12,8 +12,20 @@ const AppContextProvider = (props)=>{
     const backURL = import.meta.env.VITE_BACKEND_URL
     axios.defaults.withCredentials = true
 
-    const [userData,setUserData] = useState({})
+    const [userData,setUserData] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    const isAuthenticated = async ()=>{
+        try {
+            const {data} = await axios.get(`${backURL}/api/auth/is-auth`)
+
+            data.success && setIsLoggedIn(true)
+            data.success && getUserData()
+
+        } catch(error){
+            toast.error(error.message)
+        }
+    }
 
     const getUserData = async()=>{
 
@@ -21,14 +33,8 @@ const AppContextProvider = (props)=>{
             const {data} = await axios.get(`${backURL}/api/user/data`)
 
         if (data.success) {
-            
-            const name = data.userData.name
-            const isAccountVerified = data.userData.isAccountVerified
-            setUserData({
-                name,
-                isAccountVerified
-            })
-            setIsLoggedIn(true)
+            setUserData(data.userData)
+        
         } else {
             toast.error(data.message)
         }
@@ -40,15 +46,14 @@ const AppContextProvider = (props)=>{
     }
 
     useEffect(()=>{
-        getUserData()
-    },[userData])
+        isAuthenticated()
+    },[])
 
     const value ={
         isLoggedIn,setIsLoggedIn,
         userData,setUserData,
         getUserData,backURL
     }
-
     return (
         <AppContext.Provider value = {value}>
             {props.children}

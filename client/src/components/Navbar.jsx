@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-  const {isLoggedIn,setIsLoggedIn,userData,backURL} = useContext(AppContext)
+  const {isLoggedIn,setIsLoggedIn,userData,setUserData,backURL} = useContext(AppContext)
   
   
 
@@ -19,7 +19,9 @@ const Navbar = () => {
       const {data} = await axios.post(`${backURL}/api/auth/logout`)
        if(data.success){
         setIsLoggedIn(false)
-        navigate("/login")
+        setUserData({})
+        navigate("/")
+        
         toast.success(data.message)
        } else {
         toast.error(data.message)
@@ -40,7 +42,7 @@ const Navbar = () => {
         />
         {isLoggedIn? 
             <div className="bg-gray-600  text-white rounded-[50%] px-4 py-2 text-lg font-semibold cursor-pointer group relative"> 
-              {userData.name[0].toUpperCase()}
+              {userData? userData.name[0].toUpperCase():""}
               <div className='absolute hidden z-10 group-hover:block top-10 right-6 w-[120px] '>
                 <ul className='flex flex-col gap-2 items-start bg-gray-50 rounded-sm text-sm text-gray-700 p-2 w-full'>
                   {userData.isAccountVerified?"":<li className='hover:bg-gray-200 p-2 rounded-md w-full '>Verify email</li>}
@@ -49,7 +51,7 @@ const Navbar = () => {
               </div>
             </div>
         :
-        <div onClick={()=>navigate("/login")} className="flex items-center border border-gray-400 rounded-full py-2 px-5 md:px-6 hover:bg-gray-50 hover:border-indigo-500 cursor-pointer mt-2">
+        <div onClick={()=>navigate("/login")} className="flex items-center border gap-2 border-gray-400 rounded-full py-2 px-5 md:px-6 hover:bg-gray-50 hover:border-indigo-500 cursor-pointer mt-2">
           <p  className="text-lg font-semibold text-indigo-900">Login</p>
           <img className="font-bold" src={assets.arrow_icon} alt="Arrow Icon" />
         </div> }

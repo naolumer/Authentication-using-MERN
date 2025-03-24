@@ -12,7 +12,7 @@ const Header = () => {
         <div className='flex flex-col gap-2 items-center justify-center mt-32  '>
             <img className='aspect-square w-28 md:w-36 rounded-full mt-12 bg- ' src={assets.header_img} alt="" />
         <div className='flex items-center gap-4'>
-            <p className='text-2xl md:text-3xl'>Hey {isLoggedIn?userData.name:"Developer"} ! </p>
+            <p className='text-2xl md:text-3xl'>Hey {isLoggedIn?userData?.name:"Developer"} ! </p>
             <img className='w-10' src={assets.hand_wave} alt="" />
         </div>
         <div className="flex flex-col items-center gap-4 mx-8">
