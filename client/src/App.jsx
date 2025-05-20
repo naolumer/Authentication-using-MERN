@@ -8,7 +8,6 @@ import ResetPassword from "./pages/ResetPassword"
 import VerifyEmail from "./pages/VerifyEmail"
 
 
-
 const App = () => {
   return (
     <div>
