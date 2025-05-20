@@ -20,13 +20,9 @@ const Login = () => {
 
   const inputref = useRef()
   
-
   const togglepass = ()=>{
     inputref.current.type= inputref.current.type === "password"?"text":"password"
   }
-
-
-  
 
   const login = async ()=>{
     try{
