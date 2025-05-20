@@ -89,9 +89,6 @@ const Login = () => {
     state==="Sign up"? signup() : login()
   }
   
-
-  
-  
   return (
     <div className='relative bg-gradient-to-br from-blue-200 to-purple-400 min-h-screen w-full flex items-center justify-center'>
       <div onClick={()=>navigate("/")} className='absolute top-5 left-5 width-full ml-10 cursor-pointer'>

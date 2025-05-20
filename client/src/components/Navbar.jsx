@@ -23,16 +23,11 @@ const Navbar = () => {
       } else {
         toast.error(data.message)
       }
-
-      
     } catch(error){
       toast.error(error.message)
     }
     
   }
-  
-  
-
   const logout = async()=>{
     try {
       
