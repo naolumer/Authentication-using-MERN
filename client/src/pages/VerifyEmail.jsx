@@ -6,7 +6,6 @@ import axios from "axios"
 import {toast} from "react-toastify"
 import { useContext } from 'react'
 
-
 const VerifyEmail = () => {
 
   const {backURL,isLoggedIn, userData,getUserData} = useContext(AppContext)
@@ -42,7 +41,6 @@ const VerifyEmail = () => {
     }
   }
 
-  
 
   const handleInput = (e,index)=>{
     if(e.target.value.length>0 && index < inputRefs.current.length-1){
