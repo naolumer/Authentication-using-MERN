@@ -90,7 +90,6 @@ const Login = () => {
       <div onClick={()=>navigate("/")} className='absolute top-5 left-5 width-full ml-10 cursor-pointer'>
         <img  src={assets.logo} alt="" />
       </div>
-
       
         <div className='w-[320px] sm:w-[350px] md:w-[370px]'>
         <form onSubmit={onsubmitHandler} className='bg-slate-900 w-full rounded-lg h-fit flex flex-col items-center gap-3 py-4 px-3  ' >
@@ -106,7 +105,6 @@ const Login = () => {
               onChange={(e)=>setName(e.target.value)}
               required/>
           </div>) }
-          
 
           <div className='mb-2 flex items-start gap-2 bg-[#464c6c] w-[85%] rounded-full '>
             <img className='ml-4 mt-3' src={assets.mail_icon} alt="" />
