@@ -6,8 +6,7 @@ import { AppContext } from '../context/AppContext'
 import axios from "axios"
 import {toast} from "react-toastify"
 import { useContext } from 'react'
-import { IoIosEyeOff } from "react-icons/io";
-import { IoIosEye } from "react-icons/io";
+
 
 const Login = () => {
   
