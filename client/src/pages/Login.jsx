@@ -25,10 +25,10 @@ const Login = () => {
 
   const login = async ()=>{
     try{
-            axios.defaults.withCredentials = true
-            const {data} = await axios.post(`${backURL}/api/auth/login`,{
-            email,
-            password
+          axios.defaults.withCredentials = true
+          const {data} = await axios.post(`${backURL}/api/auth/login`,{
+          email,
+          password
           })
 
           if (data.success){
@@ -60,6 +60,7 @@ const Login = () => {
     })
 
     if (data.success){
+
       setIsLoggedIn(true)
       toast.success(data.message)
       
@@ -84,6 +85,7 @@ const Login = () => {
   }
   
   return (
+    
     <div className='relative bg-gradient-to-br from-blue-200 to-purple-400 min-h-screen w-full flex items-center justify-center'>
       <div onClick={()=>navigate("/")} className='absolute top-5 left-5 width-full ml-10 cursor-pointer'>
         <img  src={assets.logo} alt="" />
