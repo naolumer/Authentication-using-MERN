@@ -36,7 +36,6 @@ const Login = () => {
             setIsLoggedIn(true)
             getUserData()
             toast.success(data.message)
-
             
             setEmail("")
             setPassword("")
