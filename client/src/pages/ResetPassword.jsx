@@ -74,6 +74,7 @@ const ResetPassword = () => {
   const handlePaste = (e,index)=>{
     const paste = e.clipboardData.getData("text")
     const pasteArray = paste.split("") 
+    
     pasteArray.forEach((char,index)=>{
       if(inputRefs.current[index]){
         inputRefs.current[index].value = char
@@ -100,6 +101,7 @@ const ResetPassword = () => {
             
             <input className='outline-none py-[8px] sm:py-[9px] text-sm md:py-[12px] px-3  
             rounded-full bg-transparent font-light text-white placeholder:text-gray-400 placeholder:text-sm placeholder:font-light w-full' 
+
               type="email" 
               placeholder='Email id'
               required
