@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-  const {isLoggedIn,setIsLoggedIn,userData,setUserData,backURL} = useContext(AppContext)
+  const {userData,backURL,logout} = useContext(AppContext)
 
   const sendVerificationOtp = async ()=>{
     try {
@@ -28,22 +28,7 @@ const Navbar = () => {
     }
     
   }
-  const logout = async()=>{
-    try {
-      
-      const {data} = await axios.post(`${backURL}/api/auth/logout`)
-       if(data.success){
-        setIsLoggedIn(false)
-        setUserData(false)
-        navigate("/")
-        
-       } else {
-        toast.error(data.message)
-       }
-    } catch(error){
-      toast.error(error.message)
-    } 
-  }
+  
 
   return (
     <div className="absolute top-0 left-0 right-0 w-full">

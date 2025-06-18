@@ -19,7 +19,7 @@ const Header = () => {
            <h1 className="text-black text-4xl md:text-5xl mt-3 font-semibold">Welcome to our app</h1>
            <p className='text-center text-gray-600 text-md'>Let's start with a quick product tour and we will have you <br /> up and running in no time!</p>
         </div>
-        <button onClick={()=>navigate(`${isLoggedIn?"/":"/login"}`)} className='py-2 px-8 md:px-10 md:py-3  border-2 font-md border-gray-400 mt-6 rounded-full hover:border-indigo-600'>Get started</button>
+        <button onClick={()=>navigate(`${isLoggedIn?"/":"/login"}`)} className='py-2 px-8 md:px-10 md:py-3  border-2 font-md border-gray-400 mt-6 rounded-full hover:border-indigo-600'>{isLoggedIn ? "Logout":"Get started"}</button>
         </div> 
     </div>
     

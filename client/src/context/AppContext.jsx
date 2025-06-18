@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios"
 import {toast} from "react-toastify"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -11,6 +12,7 @@ const AppContextProvider = (props)=>{
     
     const backURL = import.meta.env.VITE_BACKEND_URL
     axios.defaults.withCredentials = true
+    const navigate = useNavigate()
 
     const [userData,setUserData] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -45,6 +47,23 @@ const AppContextProvider = (props)=>{
         
     }
 
+    const logout = async()=>{
+        try {
+          
+          const {data} = await axios.post(`${backURL}/api/auth/logout`)
+           if(data.success){
+            setIsLoggedIn(false)
+            setUserData(false)
+            navigate("/")
+            
+           } else {
+            toast.error(data.message)
+           }
+        } catch(error){
+          toast.error(error.message)
+        } 
+      }
+
     useEffect(()=>{
         isAuthenticated()
     },[])
@@ -52,7 +71,7 @@ const AppContextProvider = (props)=>{
     const value ={
         isLoggedIn,setIsLoggedIn,
         userData,setUserData,
-        getUserData,backURL
+        getUserData,backURL,logout
     }
     return (
         <AppContext.Provider value = {value}>
